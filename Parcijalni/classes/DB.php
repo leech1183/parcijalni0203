@@ -64,15 +64,22 @@ class DB
   public function chathistory()
   {
     try {
-      $stmt = $this->conn->prepare("SELECT id, msg FROM chvenk");
+      $stmt = $this->conn->prepare("SELECT * FROM chvenk");
       $stmt->execute();
-      $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-      return $stmt-> fetchAll();
+      $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    
+      while ($result = $stmt->fetch()){
+
+        echo $result['time']."<br>";
+        echo $result['msg']."<br>";
+            }
+      
     } catch (PDOException $e) {
       echo "Error: " . $e->getMessage();
       die();
     }
   }
+
 
 
   public function posalji($posaljiporuke)

@@ -11,7 +11,7 @@ class Config
   public static function get($file = '')
   {
     if ($file) {
-      $podatak = require 'config/' . $file . '.php';
+      $podatak = require '../config/' . $file . '.php';
       return $podatak;
     }
 
